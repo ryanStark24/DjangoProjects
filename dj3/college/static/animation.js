@@ -16,17 +16,20 @@ var previous;
 var canvas;
 function setup() {
 canvas=createCanvas(windowWidth, windowHeight);
+
 canvas.position(0,0);
 canvas.style('z-index','-1');
 current = createVector(0,0);
 previous = createVector(0,0);
+
 };
 
 function draw() {
 	
 	
-background(180);
-
+background(color('#5bcaff'));
+canvas.style('background','linear-gradient(135deg, #55efcb 0%, #1e5799 0%, #55efcb 0%, #5bcaff 100%)');
+//canvas.style('background',' ');
 // If it's time for a new point
 if (millis() > next && painting) {
 

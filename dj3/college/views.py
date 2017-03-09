@@ -15,7 +15,7 @@ class MyList(generic.ListView):
     template_name='index.html'
     context_object_name='nl'
     def get_queryset(self):
-        return College.objects.order_by('cr_date')[:5]
+        return College.objects.order_by('cr_date')
    
 class DetailView(generic.DetailView):
     model=College

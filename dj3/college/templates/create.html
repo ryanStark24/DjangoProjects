@@ -2,13 +2,19 @@
 
 {% block main%}
  
-<form action="{%url 'college:create'%}" method='POST'>
+<form action="{%url 'college:create'%}" method='POST' role="form">
 {% csrf_token %}
-<ul style="color:black;">
-{{form.as_ul}}
-</ul>
 
-<input type='submit' name='submit value='create'>
 
+{% for fields in form %}
+	<div class="form-group">
+		<label for="name">{{fields.label}}:</label>{{fields}}
+	</div>
+
+	{% endfor%}
+	<input type='submit' name='submit value='create' class="btn btn-default">
 </form>
+
+
+
 {% endblock%}
