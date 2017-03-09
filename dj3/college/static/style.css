@@ -21,7 +21,9 @@ body{
 	background-color: rgba(128, 128, 128, 0.2);
 	color: white;
 }
-
+.container-fluid{
+	background: #f6f8f9; border-radius: 25px;box-shadow: 2.5px 5px grey;
+}
 .navbar {
 	margin-bottom: 0;
 	display: inline-block;
