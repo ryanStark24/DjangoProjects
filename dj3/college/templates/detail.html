@@ -2,7 +2,7 @@
 
 {% block main %}
 
-	
+	<h1 id="brand">Details</h1>
 	<div class=" table-responsive">
     <table class="table  table-condensed table-bordered" style="color:black">
     <tr><th >Subject</th><td>{{ nl.subject }}</td></tr>    
@@ -10,8 +10,9 @@
     <tr><th>Created Date</th><td>{{ nl.cr_date }}</td></tr>    
 	</table>
 	</div>
-	
-	<a  href="/college/" role="button"class="button col-sm-3">Back</a>
+	<div style="text-align:center;">
+	<a  href="/college/" role="button"class="btn btn-success col-sm-3" style="width:100%">Back</a>
+	</div>
 	
 {% endblock %}
 

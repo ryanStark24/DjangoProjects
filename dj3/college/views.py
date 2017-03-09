@@ -25,6 +25,9 @@ class DetailView(generic.DetailView):
 def signup(request):
     return render(request,"signup.html")   
 
+def About(request):
+    return render(request,"about.html")
+   
 def create(request):
     if request.POST:
         form=noticeForm(request.POST)

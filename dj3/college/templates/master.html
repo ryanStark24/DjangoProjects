@@ -11,7 +11,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
+	<link rel="icon" type="image/gif" href="{% static 'images/icon.png' %}" />
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -55,7 +55,7 @@
 								<ul class="nav navbar-nav">
 									<li class="active"><a id="home" href="#" data-toggle="tab"">Home</a></li>
 									<li><a id="Statistics " href="{%url 'college:create'%}" data-toggle="tab ">Create Notice</a></li>
-									<li><a id="About " href="# " data-toggle="tab ">About</a></li>
+									<li><a id="About " href="{%url 'college:about'%} " data-toggle="tab ">About</a></li>
 
 								</ul>
 								{% block login %}
@@ -114,10 +114,11 @@
 
 
 			<div class="row"style="margin-top:4%;">
+			{%block about %}
 				<div class="col-sm-4 " >
 					{% block sidenav%} {% endblock %}</div>
 					{% block signup %}
-				<div class="col-sm-4 container-fluid ">
+				<div class="col-sm-4 container-fluid " style="padding-bottom:6px;">
 
 
 					{% block main %}
@@ -125,6 +126,7 @@
 					{% endblock %}
 
 				</div>
+				{% endblock %}
 				{% endblock %}
 			</div>
 

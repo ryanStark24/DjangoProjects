@@ -56,7 +56,7 @@ td {
 
 #brand {
 	font-family: 'Sofia';
-	font-size: 22px;
+	font-size: 40px;
 	text-align: left;
 	
 	color: black;
@@ -67,7 +67,15 @@ td {
 	font-size: 22px;
 }
 
+u{
+	text-shadow: 2px 2px #c0c0c0;
+	text-transform: uppercase;
+	
+}
 
+b{
+	color:grey;
+}
 
 .button {
 	-webkit-box-flex: 1;
