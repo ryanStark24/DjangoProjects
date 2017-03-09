@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Notice Board</title>
+<!-- Attachments for jquery and css and bootstrap -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script
+	src="{% static 'p5.js' %}"></script>
+	<script
+	src="{% static 'p5.dom.js' %}"></script>
+
+
+<!-- My links -->
+
+<link rel="stylesheet" href=" {% static 'homepage.css' %}  " />
+<link rel="stylesheet" href=" {% static 'style.css' %}  " />
+<link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+<!-- Links for javascript background animation -->
+<script src="{% static 'clicker.js' %}"></script>
+<script type='text/javascript'
+	src="{% static 'jquery.particleground.js'%}"></script>
+</head>
+
+<body id="body">
+
+	<div id="particles">
+		<div id="intro">
+			<!-- Navigation Bar -->
+			<div class="row">
+				<div class="col-sm-12">
+					<nav class="navbar navbar-inverse navbar-fixed-top ">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle"
+									data-toggle="collapse" data-target="#myNavbar">
+									<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+										class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" id='logo' href="/college/">Notice
+									Board</a>
+							</div>
+							<div class="collapse navbar-collapse" id="myNavbar">
+								<ul class="nav navbar-nav">
+									<li class="active"><a id="home" href="#" data-toggle="tab"">Home</a></li>
+									<li><a id="Statistics " href="/college/create " data-toggle="tab ">Create Notice</a></li>
+									<li><a id="About " href="# " data-toggle="tab ">About</a></li>
+
+								</ul>
+								{% block login %}
+								<ul class="nav navbar-nav navbar-right ">
+									<li><a id="SignUp" href="{% url 'college:signup' %}"><span
+											class="glyphicon glyphicon-user "></span> Sign Up</a></li>
+
+									<li class="dropdown "><a id="SignIn" href="#"
+										class="dropdown-toggle" data-toggle="dropdown"><span
+											class="glyphicon glyphicon-log-in"
+											style="padding-right: 10px;"></span>Sign in <b class="caret"></b></a>
+										<ul id="login" class="dropdown-menu"
+											style="padding: 15px; min-width: 250px;">
+											<li>
+												<div class="row">
+													<div class="col-md-12">
+
+														<!-- Login Form Start from Here -->
+														<form class="form" role="form" method="post"
+															action="login" accept-charset="UTF-8" id="login-nav">
+															<div class="form-group">
+																<label class="sr-only" for="exampleInputEmail2">Email
+																	address</label> <input type="email" class="form-control"
+																	id="exampleInputEmail2" placeholder="Email address"
+																	required>
+															</div>
+															<div class="form-group">
+																<label class="sr-only" for="exampleInputPassword2">Password</label>
+																<input type="password" class="form-control"
+																	id="exampleInputPassword2" placeholder="Password"
+																	required>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox"> Remember
+																	me
+																</label>
+															</div>
+															<div class="form-group">
+																<button type="submit" class="btn btn-success btn-block">Sign
+																	in</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</li>
+
+										</ul></li>
+								</ul>
+								{% endblock %}
+							</div>
+					</nav>
+
+				</div>
+			</div>
+			<!-- Webapage Description area -->
+
+
+			<div class="row">
+				<div class="col-sm-4 " style="background-color: transparent;">
+					{% block sidenav%} {% endblock %}</div>
+					{% block signup %}
+				<div class="col-sm-4 " style="background-color: transparent;">
+
+
+					{% block main %}
+					<p>Thanx for opening this website</p>
+					{% endblock %}
+
+				</div>
+				{% endblock %}
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</body>
+
+</html>

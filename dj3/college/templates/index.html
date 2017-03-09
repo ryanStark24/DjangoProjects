@@ -1,0 +1,23 @@
+{% extends "master.html" %} {% block main %}
+<h1 id='brand'>Notice Board</h1>
+<div class=" table-responsive" id="table">
+
+	<table class="table  table-condensed">
+		<thead>
+			<tr style="color: #00FFFF;">
+				<th>Subject</th>
+				<th>created Date</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for n1 in nl %}
+			<tr>
+				<td><a href="/college/{{n1.id}}" style="color: white;" >{{ n1.subject }}</a></td>
+				<td>{{ n1.cr_date }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

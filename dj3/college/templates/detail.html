@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block main %}
+
+
+	<div class=" table-responsive">
+    <table class="table  table-condensed table-bordered"style="color:white">
+    <tr><th >Subject</th><td>{{ nl.subject }}</td></tr>    
+    <tr><th>Message</th><td>{{ nl.message }}</td></tr>    
+    <tr><th>Created Date</th><td>{{ nl.cr_date }}</td></tr>    
+	</table>
+	</div>
+	
+	
+	<button type="button" class="btn btn-info"><a href="/college/" style="color:black;"> Back</a></button>
+	
+{% endblock %}
+
+
+
