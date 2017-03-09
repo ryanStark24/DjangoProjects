@@ -2,17 +2,17 @@
 
 {% block main %}
 
-
+	
 	<div class=" table-responsive">
-    <table class="table  table-condensed table-bordered"style="color:white">
+    <table class="table  table-condensed table-bordered" style="color:black">
     <tr><th >Subject</th><td>{{ nl.subject }}</td></tr>    
     <tr><th>Message</th><td>{{ nl.message }}</td></tr>    
     <tr><th>Created Date</th><td>{{ nl.cr_date }}</td></tr>    
 	</table>
 	</div>
 	
-	
-	<button type="button" class="btn btn-info"><a href="/college/" style="color:black;"> Back</a></button>
+	<a class="btn btn-info" href="/college/" role="button">Back</a>
+
 	
 {% endblock %}
 

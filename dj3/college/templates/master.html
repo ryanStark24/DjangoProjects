@@ -24,22 +24,20 @@
 
 <!-- My links -->
 
-<link rel="stylesheet" href=" {% static 'homepage.css' %}  " />
+
 <link rel="stylesheet" href=" {% static 'style.css' %}  " />
 <link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
 <!-- Links for javascript background animation -->
-<script src="{% static 'clicker.js' %}"></script>
-<script type='text/javascript'
-	src="{% static 'jquery.particleground.js'%}"></script>
+<script src="{% static 'animation.js' %}"></script>
+
 </head>
 
 <body id="body">
 
-	<div id="particles">
-		<div id="intro">
+	
 			<!-- Navigation Bar -->
-			<div class="row">
+			<div class="row" >
 				<div class="col-sm-12">
 					<nav class="navbar navbar-inverse navbar-fixed-top ">
 						<div class="container-fluid">
@@ -55,7 +53,7 @@
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
 									<li class="active"><a id="home" href="#" data-toggle="tab"">Home</a></li>
-									<li><a id="Statistics " href="/college/create " data-toggle="tab ">Create Notice</a></li>
+									<li><a id="Statistics " href="{%url 'college:create'%}" data-toggle="tab ">Create Notice</a></li>
 									<li><a id="About " href="# " data-toggle="tab ">About</a></li>
 
 								</ul>
@@ -114,11 +112,11 @@
 			<!-- Webapage Description area -->
 
 
-			<div class="row">
-				<div class="col-sm-4 " style="background-color: transparent;">
+			<div class="row"style="margin-top:4%;">
+				<div class="col-sm-4 " >
 					{% block sidenav%} {% endblock %}</div>
 					{% block signup %}
-				<div class="col-sm-4 " style="background-color: transparent;">
+				<div class="col-sm-4 " >
 
 
 					{% block main %}
@@ -132,9 +130,7 @@
 
 
 
-		</div>
-	</div>
-
+	
 </body>
 
 </html>
