@@ -1,7 +1,7 @@
 {% extends 'master.html' %}
 
 {% block main%}
- <h1 id="brand" style="font-size: 40px;padding-left:0;">Create New Notice</h1>
+ <h1 id="brand" style="font-size: 40px;">Create New Notice</h1>
  <br>
 <form action="{%url 'college:create'%}" method='POST' role="form">
 {% csrf_token %}
