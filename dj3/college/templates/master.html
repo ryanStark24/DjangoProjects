@@ -13,21 +13,19 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Icon for Title -->
 <link rel="icon" type="image/gif" href="{% static 'images/icon.png' %}" />
-
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<script
-	src="{% static 'p5.js' %}"></script>
-	<script
-	src="{% static 'p5.dom.js' %}"></script>
-
+<script src="{% static 'p5.js' %}"></script>
+<script src="{% static 'p5.dom.js' %}"></script>
+<script src="{% static 'slider.js' %}"></script>
 
 
 <!-- My links -->
 
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
-<link rel="stylesheet" href=" {% static 'style.css' %}  " />
+
 <link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
 
@@ -35,110 +33,107 @@
 <!-- Links for javascript background animation -->
 <script src="{% static 'sketch.js' %}"></script>
 <script src="{% static 'particle.js' %}"></script>
-	<script
-	src="{% static 'base.js' %}"></script>
+<script src="{% static 'base.js' %}"></script>
+
 </head>
 
 <body id="body">
 
-	
-			<!-- Navigation Bar -->
-			<div class="row" >
-				<div class="col-sm-12">
-					<nav class="navbar navbar-inverse navbar-fixed-top ">
-						
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle"
-									data-toggle="collapse" data-target="#myNavbar">
-									<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" id='logo' href="/college/">Notice
-									Board</a>
-							</div>
-							<div class="collapse navbar-collapse" id="myNavbar">
-								<ul class="nav navbar-nav">
-									<li id="home"><a  href="/college/" >Home</a></li>
-									<li id="create"><a  href="{%url 'college:create'%}" data-toggle="tab ">Create Notice</a></li>
-									<li id="about"><a  href="{%url 'college:about'%} " data-toggle="tab ">About</a></li>
 
-								</ul>
-								{% block login %}
-								<ul class="nav navbar-nav navbar-right ">
-									<li id="signup"><a  href="{% url 'college:signup' %}"><span
-											class="glyphicon glyphicon-user "></span> Sign Up</a></li>
+	<!-- Navigation Bar -->
+	<div class="row">
+		<div class="col-sm-12">
+			<nav class="navbar navbar-inverse navbar-fixed-top ">
 
-									<li class="dropdown " id="signin"><a  href="#"
-										class="dropdown-toggle" data-toggle="dropdown"><span
-											class="glyphicon glyphicon-log-in"
-											style="padding-right: 10px;"></span>Sign in <b class="caret"></b></a>
-										<ul id="login" class="dropdown-menu"
-											style="padding: 15px; min-width: 250px;">
-											<li>
-												<div class="row">
-													<div class="col-md-12">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" id='logo' href="/college/">Notice Board</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li id="home"><a href="/college/">Home</a></li>
+						<li id="create"><a href="{%url 'college:create'%}"
+							data-toggle="tab ">Create Notice</a></li>
+						<li id="about"><a href="{%url 'college:about'%} "
+							data-toggle="tab ">About</a></li>
 
-														<!-- Login Form Start from Here -->
-														<form class="form" role="form" method="post"
-															action="login" accept-charset="UTF-8" id="login-nav">
-															<div class="form-group">
-																<label class="sr-only" for="exampleInputEmail2">Email
-																	address</label> <input type="email" class="form-control"
-																	id="exampleInputEmail2" placeholder="Email address"
-																	required>
-															</div>
-															<div class="form-group">
-																<label class="sr-only" for="exampleInputPassword2">Password</label>
-																<input type="password" class="form-control"
-																	id="exampleInputPassword2" placeholder="Password"
-																	required>
-															</div>
-															<div class="checkbox">
-																<label> <input type="checkbox"> Remember
-																	me
-																</label>
-															</div>
-															<div class="form-group">
-																<button type="submit" class="btn btn-success btn-block">Sign
-																	in</button>
-															</div>
-														</form>
-													</div>
+					</ul>
+					{% block login %}
+					<ul class="nav navbar-nav navbar-right ">
+						<li id="signup"><a href="{% url 'college:signup' %}"><span
+								class="glyphicon glyphicon-user "></span> Sign Up</a></li>
+
+						<li class="dropdown " id="signin"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown"><span
+								class="glyphicon glyphicon-log-in" style="padding-right: 10px;"></span>Sign
+								in <b class="caret"></b></a>
+							<ul id="login" class="dropdown-menu"
+								style="padding: 15px; min-width: 250px;">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+
+											<!-- Login Form Start from Here -->
+											<form class="form" role="form" method="post" action="login"
+												accept-charset="UTF-8" id="login-nav">
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputEmail2">Email
+														address</label> <input type="email" class="form-control"
+														id="exampleInputEmail2" placeholder="Email address"
+														required>
 												</div>
-											</li>
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputPassword2">Password</label>
+													<input type="password" class="form-control"
+														id="exampleInputPassword2" placeholder="Password" required>
+												</div>
+												<div class="checkbox">
+													<label> <input type="checkbox"> Remember me
+													</label>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-block">Sign
+														in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</li>
 
-										</ul></li>
-								</ul>
-								{% endblock %}
-							</div>
-					</nav>
-
-				</div>
-			</div>
-			<!-- Webapage Description area -->
-
-
-			<div class="row"style="margin-top:4%;">
-			{%block about %}
-				<div class="col-sm-4 " >
-					{% block sidenav%} {% endblock %}</div>
-					{% block signup %}
-				<div class="col-sm-4 container-fluid " style="padding-bottom:6px;">
-
-
-					{% block main %}
-					<p>Thanx for opening this website</p>
+							</ul></li>
+					</ul>
 					{% endblock %}
-
 				</div>
-				{% endblock %}
-				{% endblock %}
-			</div>
+			</nav>
+
+		</div>
+	</div>
+	<!-- Webapage Description area -->
+
+
+	<div class="row" style="margin-top: 4%;">
+		{%block about %}
+		<div class="col-sm-4 ">{% block sidenav%} {% endblock %}</div>
+		{% block signup %}
+		<div class="col-sm-4 container-fluid " style="padding-bottom: 6px;">
+
+
+			{% block main %}
+			<p>Thanx for opening this website</p>
+			{% endblock %}
+
+		</div>
+		{% endblock %} {% endblock %}
+	</div>
 
 
 
 
-	
+
 </body>
 
 </html>
