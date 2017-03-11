@@ -15,6 +15,14 @@
 			<tr>
 				<td><a href="/college/{{n1.id}}" style="color:black;" >{{ n1.subject }}</a></td>
 				<td>{{ n1.cr_date }}</td>
+				<td><form action="{% url 'college:delete' n1.id %}" method="post" >
+				{% csrf_token %}
+				<input type="hidden" name="college_id" value="{{n1.id}}"/>
+				<button type="submit" >
+				<span class="glyphicon glyphicon-trash">
+				</span>
+				</button>
+				</form></td>
 			</tr>
 			{% endfor %}
 		</tbody>

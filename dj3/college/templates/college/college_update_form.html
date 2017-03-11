@@ -1,0 +1,24 @@
+{% extends 'master.html' %}
+
+{% block main%}
+<div class="row">
+<div class="col-sm-8">
+	<h1 id="brand">Update Details</h1>
+	</div>
+	<div class="col-offset-6 col-sm-4 col-md-auto " style="padding-top:6%">
+	
+				<button class="button btn btn-primary"><span role="button" class="glyphicon glyphicon-chevron-left"><a href="{% url 'college:index'  %}" style="color:white;text-decoration: None" >
+				Home
+				</a>
+				</span>
+				</button>
+				</div>
+				</div>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <div style="text-align:center"> 
+	<input type='submit' name='submit value='create' class="btn btn-success" style="width:100%">
+	</div>
+</form>
+
+{% endblock%}

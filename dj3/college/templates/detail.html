@@ -1,9 +1,21 @@
 {% extends "master.html" %}
 
 {% block main %}
-
+	<div class="row">
+	<div class="col-sm-8">
 	<h1 id="brand">Details</h1>
+	</div>
+	<div class="col-offset-6 col-sm-4 col-md-auto " style="padding-top:6%">
+	
+				<button class="button btn btn-primary"><span role="button" class="glyphicon glyphicon-edit"><a href="{% url 'college:update' nl.id %}" style="color:white;text-decoration: None" >
+				Update
+				</a>
+				</span>
+				</button>
+				</div>
+				</div>
 	<div class=" table-responsive">
+	
     <table class="table  table-condensed table-bordered" style="color:black">
     <tr><th >Subject</th><td>{{ nl.subject }}</td></tr>    
     <tr><th>Message</th><td>{{ nl.message }}</td></tr>    
