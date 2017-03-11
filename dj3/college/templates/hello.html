@@ -5,5 +5,5 @@
 {% endblock %}
 
 {% block login %}
-<a href="{% url 'college:logout' %}?next={% url 'college:index' %}"> Logout</a>
+<li style="padding-right: 60px;padding-top: 6px;"><button class="button btn btn-danger"><span role="button" class="glyphicon glyphicon-log-out"><a href="{% url 'college:logout' %}?next={% url 'college:index' %}"style="color:white;text-decoration: None"> Logout</a></span></button></li>
 {% endblock %}

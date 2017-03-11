@@ -1,26 +1,29 @@
-
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import render, redirect, render_to_response
+from django.contrib.auth import authenticate, login
 
 from django.views import generic
 from .models import College
-from django.shortcuts import render, redirect, render_to_response
-from django.contrib.auth import authenticate, login, logout
 
 from .forms import UserForm
 from django.views.generic.base import View
 from django.contrib.auth.decorators import login_required
 
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import  HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse_lazy
 from college.forms import College_Form
-from django.template import context,RequestContext
-from django.contrib.auth import logout
+from django.template import RequestContext
+from django.contrib.auth.views import logout
 
-def logout_view(request):
-    logout(request,next_page='college:index')
+
+
 
 @login_required(login_url='college/login/')
 def hello(request):
     return render(request,'hello.html')
+
 
 class IndexView(generic.ListView):
     template_name = 'index.html'
@@ -70,7 +73,14 @@ class UserFormView(View):
         if form.is_valid():
             
             user = form.save(commit=False)
-            
+            subject="testing"
+            message="Success"
+            from_email=settings.EMAIL_HOST_USER
+            print(settings.EMAIL_HOST_USER)
+            to_list= [request.POST['email']]
+           
+         
+            send_mail(subject,message,from_email,to_list)
             # Normalised Data
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -86,7 +96,7 @@ class UserFormView(View):
                 
                 if user.is_active:
                     login(request, user)
-                    return redirect('college:index')
+                    return redirect('college:home')
             
             
     
@@ -105,6 +115,6 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect('/college/home/')
-    return render_to_response('login.html',context=RequestContext(request))
+    return render_to_response('index.html',context=RequestContext(request))
 
 

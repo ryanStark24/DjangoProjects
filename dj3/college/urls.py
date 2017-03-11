@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^about/$', views.About, name='about'),
     url(r'^login/$', views.login_user,name='login'),
     url(r'^logout/$', auth_views.logout,{'next_page': 'college:index'}, name='logout'),
+   
 ]
