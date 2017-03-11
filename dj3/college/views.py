@@ -1,12 +1,14 @@
 
-from django.http.response import HttpResponse, HttpResponseRedirect
+
 from django.views import generic
 from .models import College
-from django.shortcuts import render, render_to_response
-from college.forms import noticeForm
-from django.template.defaulttags import csrf_token
-from django.template.context_processors import csrf
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate,login
 
+from .forms import UserForm
+from django.views.generic.base import View
+
+from django.http.response import HttpResponse
 # Create your views here.
 def hello(request):
     return HttpResponse("Hello")
@@ -22,24 +24,52 @@ class DetailView(generic.DetailView):
     template_name='detail.html'
     context_object_name='nl'
 
-def signup(request):
-    return render(request,"signup.html")   
+
 
 def About(request):
     return render(request,"about.html")
+def logged(request):
+    return render(request,"loggedin.html")
    
-def create(request):
-    if request.POST:
-        form=noticeForm(request.POST)
+class collegeCreate(generic.CreateView):
+    model=College
+    fields='__all__'
+    
+class UserFormView(View):
+    form_class=UserForm
+    template_name="signup.html"
+    
+    #Balnk Form
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+    
+    
+    #data processing
+    def post(self,request):
+        form=self.form_class(request.POST)
+        
         if form.is_valid():
-            form.save()
             
-            return HttpResponseRedirect('/college/')
-    else:
-            form=noticeForm()
-            args={}
-            args.update(csrf(request))
-            args['form']=form
+            user= form.save(commit=False)
             
-            return render_to_response('create.html',args)
+            #Normalised Data
+            username=form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            user.set_password(password)
             
+            user.save()
+            
+            #Login And authenticate
+            
+            user=authenticate(username=username,password=password)
+            
+            if user is not None:
+                
+                if user.is_active:
+                    login(request, user)
+                    return redirect('college:index')
+            
+            
+    
+        return render(request,self.template_name,{'form':form})

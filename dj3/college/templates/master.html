@@ -18,7 +18,7 @@
 
 <script src="{% static 'p5.js' %}"></script>
 <script src="{% static 'p5.dom.js' %}"></script>
-<script src="{% static 'slider.js' %}"></script>
+
 
 
 <!-- My links -->
@@ -62,8 +62,9 @@
 							data-toggle="tab ">About</a></li>
 
 					</ul>
-					{% block login %}
+					
 					<ul class="nav navbar-nav navbar-right ">
+					{% block login %}
 						<li id="signup"><a href="{% url 'college:signup' %}"><span
 								class="glyphicon glyphicon-user "></span> Sign Up</a></li>
 

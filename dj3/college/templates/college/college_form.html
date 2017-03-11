@@ -1,0 +1,16 @@
+{% extends 'master.html' %}
+
+{% block main%}
+ <h1 id="brand" >Create New Notice</h1>
+ <br>
+<form action="" method='POST' role="form">
+{% csrf_token %}
+{% include "form_template.html" %}
+
+
+	<br>
+</form>
+
+
+
+{% endblock%}

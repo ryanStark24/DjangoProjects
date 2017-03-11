@@ -1,17 +1,22 @@
-from django import forms
-from college.models import College
 
-class noticeForm(forms.ModelForm):
+from college.models import College
+from django.contrib.auth.models import User
+from django import forms
+from django.forms.widgets import Widget
+
+
+
+    
+    
+class College_Form(forms.ModelForm):
     
     class Meta:
-        model=College
-        fields = '__all__' 
-    def __init__(self, *args, **kwargs):
-        super(noticeForm, self).__init__(*args, **kwargs)
-        for field in iter(self.fields):
-            self.fields[field].widget.attrs.update({
-                'class': 'form-control'
-            
-            })
-            self.fields[field].widget.attrs['cols'] = 10
-            self.fields[field].widget.attrs['rows'] = 4
+        model = College
+        fields = '__all__'
+       
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username', 'password')
+        
