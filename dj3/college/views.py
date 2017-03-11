@@ -2,18 +2,25 @@
 
 from django.views import generic
 from .models import College
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, render_to_response
+from django.contrib.auth import authenticate, login, logout
 
 from .forms import UserForm
 from django.views.generic.base import View
+from django.contrib.auth.decorators import login_required
 
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from college.forms import College_Form
-# Create your views here.
+from django.template import context,RequestContext
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request,next_page='college:index')
+
+@login_required(login_url='college/login/')
 def hello(request):
-    return HttpResponse("Hello")
+    return render(request,'hello.html')
 
 class IndexView(generic.ListView):
     template_name = 'index.html'
@@ -84,3 +91,20 @@ class UserFormView(View):
             
     
         return render(request, self.template_name, {'form':form})
+    
+    
+def login_user(request):
+    logout(request)
+    username = password = ''
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/college/home/')
+    return render_to_response('login.html',context=RequestContext(request))
+
+

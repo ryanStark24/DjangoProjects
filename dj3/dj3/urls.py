@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    
     url(r'^college/', include('college.urls',namespace='college')),
     url(r'^$',RedirectView.as_view(url='/college/')),
     
